@@ -142,18 +142,20 @@ export default function Hero({ isBooted }: { isBooted: boolean }) {
 
   const dataLabelStyle: React.CSSProperties = {
     fontFamily: 'JetBrains Mono, monospace',
-    fontSize: '10px',
-    letterSpacing: '0.18em',
-    color: 'rgba(255,255,255,0.3)',
+    fontSize: '11px',
+    fontWeight: 500,
+    letterSpacing: '0.15em',
+    color: 'rgba(255,255,255,0.55)',
     textTransform: 'uppercase',
-    lineHeight: 2,
+    lineHeight: 1.6,
   };
 
   const dataValueStyle: React.CSSProperties = {
     fontFamily: 'JetBrains Mono, monospace',
-    fontSize: '10px',
-    letterSpacing: '0.14em',
-    color: 'rgba(255,255,255,0.35)',
+    fontSize: '11px',
+    fontWeight: 400,
+    letterSpacing: '0.12em',
+    color: 'rgba(255,255,255,0.7)',
     textTransform: 'uppercase',
   };
 
@@ -201,7 +203,7 @@ export default function Hero({ isBooted }: { isBooted: boolean }) {
           transform: 'translateY(-50%)',
           display: 'flex',
           flexDirection: 'column',
-          gap: '0.1rem',
+          gap: '0.35rem',
           zIndex: 5,
           opacity: isBooted ? 1 : 0,
         }}
@@ -224,7 +226,7 @@ export default function Hero({ isBooted }: { isBooted: boolean }) {
           transform: 'translateY(-50%)',
           display: 'flex',
           flexDirection: 'column',
-          gap: '0.1rem',
+          gap: '0.35rem',
           alignItems: 'flex-end',
           zIndex: 5,
           opacity: isBooted ? 1 : 0,
@@ -250,9 +252,9 @@ export default function Hero({ isBooted }: { isBooted: boolean }) {
         ref={nameRef}
         className="font-display text-center z-10 select-none"
         style={{
-          fontSize: 'clamp(3.5rem, 11vw, 10rem)',
-          fontWeight: 700,
-          letterSpacing: '-0.04em',
+          fontSize: 'clamp(4rem, 12vw, 11rem)',
+          fontWeight: 800,
+          letterSpacing: '-0.03em',
           lineHeight: 1,
           color: '#fff',
         }}
@@ -272,12 +274,13 @@ export default function Hero({ isBooted }: { isBooted: boolean }) {
         ref={subtitleRef}
         className="font-body z-10 mt-8 text-center"
         style={{
-          fontSize: 'clamp(11px, 1.5vw, 13px)',
-          letterSpacing: '0.25em',
-          color: 'rgba(255,255,255,0.5)',
+          fontSize: 'clamp(13px, 1.8vw, 15px)',
+          fontWeight: 500,
+          letterSpacing: '0.18em',
+          color: 'rgba(255,255,255,0.75)',
           textTransform: 'uppercase',
           display: 'flex',
-          gap: '0.5em',
+          gap: '0.6em',
           alignItems: 'center',
         }}
       >
@@ -294,7 +297,7 @@ export default function Hero({ isBooted }: { isBooted: boolean }) {
 
       {/* Scroll indicator */}
       <div ref={scrollIndicatorRef} className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-3">
-        <span className="font-mono" style={{ fontSize: '9px', letterSpacing: '0.3em', color: 'rgba(255,255,255,0.3)', textTransform: 'uppercase' }}>
+        <span className="font-mono" style={{ fontSize: '10px', fontWeight: 500, letterSpacing: '0.25em', color: 'rgba(255,255,255,0.45)', textTransform: 'uppercase' }}>
           Scroll to initiate
         </span>
         <div style={{ width: '1px', height: '40px', background: 'rgba(255,255,255,0.08)', position: 'relative', overflow: 'hidden' }}>

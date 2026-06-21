@@ -143,7 +143,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body style={{ background: "#000", margin: 0, padding: 0, overflowX: "hidden" }}>
+      <body className="antialiased">
         <UIProvider>
           <LenisProvider>{children}</LenisProvider>
         </UIProvider>

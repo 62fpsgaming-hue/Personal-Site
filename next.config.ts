@@ -40,6 +40,7 @@ const securityHeaders = [
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
       "img-src 'self' data: blob:",
+      "media-src 'self' blob: data:",
       "connect-src 'self'",
       "frame-ancestors 'none'",
       "base-uri 'self'",
@@ -56,12 +57,31 @@ const nextConfig: NextConfig = {
         source: "/(.*)",
         headers: securityHeaders,
       },
+      {
+        // Optimize video caching
+        source: "/Black Hole Video 1920x1080.mp4",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
     ];
   },
   // Compress responses
   compress: true,
   // Power by header disabled — don't leak Next.js version
   poweredByHeader: false,
+  // Optimize images and media
+  images: {
+    remotePatterns: [],
+  },
+  // Enable SWR (Stale While Revalidate) for better caching
+  onDemandEntries: {
+    maxInactiveAge: 60 * 1000,
+    pagesBufferLength: 5,
+  },
 };
 
 export default nextConfig;
