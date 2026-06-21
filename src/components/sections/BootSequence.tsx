@@ -23,8 +23,13 @@ export default function BootSequence({ onComplete }: { onComplete: () => void })
   const logRafRef = useRef<number>(0);
 
   useEffect(() => {
-    const seen = sessionStorage.getItem('boot_done');
-    if (seen) { onComplete(); return; }
+    const seen = typeof window !== 'undefined' ? sessionStorage.getItem('boot_done') : null;
+    if (seen) {
+      const t = setTimeout(() => {
+        onComplete();
+      }, 0);
+      return () => clearTimeout(t);
+    }
 
     const duration = 2800; // 2.8 seconds boot
     const progressObj = { p: 0 };

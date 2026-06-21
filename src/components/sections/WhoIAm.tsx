@@ -13,7 +13,6 @@ const ROWS = [
   { label: 'CORE FOCUS', value: 'Backend Engineering' },
   { label: 'BUILDING', value: 'CollabKaro · Cognita · InTrip' },
   { label: 'LEARNING', value: 'Distributed Systems · AI' },
-  { label: 'PHASE', value: 'Foundation — 1 of 5' },
   { label: 'STATUS', value: 'BUILDING IN PUBLIC', live: true },
 ];
 

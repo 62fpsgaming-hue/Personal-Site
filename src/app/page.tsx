@@ -4,10 +4,10 @@ import dynamic from 'next/dynamic';
 import BootSequence from '@/components/sections/BootSequence';
 import Hero from '@/components/sections/Hero';
 import WhoIAm from '@/components/sections/WhoIAm';
-import Beliefs from '@/components/sections/Beliefs';
-import SkillsReel from '@/components/sections/SkillsReel';
-import Artifacts from '@/components/sections/Artifacts';
 import Experience from '@/components/sections/Experience';
+import Artifacts from '@/components/sections/Artifacts';
+import SkillsReel from '@/components/sections/SkillsReel';
+import Beliefs from '@/components/sections/Beliefs';
 import Systems from '@/components/sections/Systems';
 import Contact from '@/components/sections/Contact';
 import HUD from '@/components/layout/HUD';
@@ -41,14 +41,14 @@ export default function HomePage() {
       {/* Boot Sequence (blocks until done) */}
       {!booted && <BootSequence onComplete={() => setBooted(true)} />}
 
-      {/* Main content */}
+      {/* Main content — Founder-first narrative order */}
       <div style={{ opacity: booted ? 1 : 0, transition: 'opacity 0.8s ease 0.2s' }}>
         <Hero isBooted={booted} />
         <WhoIAm />
-        <Beliefs />
-        <SkillsReel />
-        <Artifacts />
         <Experience />
+        <Artifacts />
+        <SkillsReel />
+        <Beliefs />
         <Systems />
         <Contact />
       </div>
