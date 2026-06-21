@@ -120,7 +120,6 @@ export default function InteractiveRings() {
     >
       <video
         ref={videoRef}
-        src="/Black Hole Video 1920x1080.mp4"
         autoPlay
         loop
         muted
@@ -144,7 +143,13 @@ export default function InteractiveRings() {
           WebkitBackfaceVisibility: 'hidden',
           willChange: 'transform',
         }}
-      />
+      >
+        {/* WebM format for better compression (modern browsers) */}
+        <source src="/black-hole-opt.webm" type="video/webm" />
+        {/* MP4 fallback for older browsers */}
+        <source src="/black-hole-opt.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
       
       {/* Dark vignette overlay to ensure center is visible */}
       <div
