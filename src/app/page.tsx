@@ -21,6 +21,10 @@ export default function HomePage() {
 
   return (
     <main style={{ background: '#000', minHeight: '100vh', overflowX: 'hidden' }}>
+      {/* A11Y: Skip navigation link — visible on keyboard focus only */}
+      <a href="#main-content" className="skip-to-content">
+        SKIP TO CONTENT
+      </a>
       {/* Ambient background orbs */}
       <div className="ambient-orbs">
         <div className="ambient-orb-c" />
@@ -42,7 +46,7 @@ export default function HomePage() {
       {!booted && <BootSequence onComplete={() => setBooted(true)} />}
 
       {/* Main content — Founder-first narrative order */}
-      <div style={{ opacity: booted ? 1 : 0, transition: 'opacity 0.8s ease 0.2s' }}>
+      <div id="main-content" style={{ opacity: booted ? 1 : 0, transition: 'opacity 0.8s ease 0.2s' }}>
         <Hero isBooted={booted} />
         <WhoIAm />
         <Experience />

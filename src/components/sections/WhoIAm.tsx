@@ -11,7 +11,7 @@ const ROWS = [
   { label: 'LOCATION', value: 'Bengaluru, India', live: true },
   { label: 'BACKGROUND', value: 'Computer Science' },
   { label: 'CORE FOCUS', value: 'Backend Engineering' },
-  { label: 'BUILDING', value: 'CollabKaro · Cognita · InTrip' },
+  { label: 'BUILDING', value: 'CollabKaro · Cortex AI · Gigzy' },
   { label: 'LEARNING', value: 'Distributed Systems · AI' },
   { label: 'STATUS', value: 'BUILDING IN PUBLIC', live: true },
 ];

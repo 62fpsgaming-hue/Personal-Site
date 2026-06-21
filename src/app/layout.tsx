@@ -115,9 +115,8 @@ const jsonLd = {
     addressCountry: "IN",
   },
   sameAs: [
-    "https://github.com/neerajsaini",
-    "https://linkedin.com/in/neerajsaini",
-    "https://twitter.com/neerajsaini",
+    "https://github.com/62fpsgaming-hue",
+    "https://www.linkedin.com/in/neeraj-saini-464318232/",
   ],
   knowsAbout: [
     "Product Strategy",

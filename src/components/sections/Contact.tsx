@@ -7,9 +7,29 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const LINKS = [
-  { label: 'GitHub', href: 'https://github.com/neerajsaini', suffix: '↗' },
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/neerajsaini', suffix: '↗' },
-  { label: 'Email', href: 'mailto:contact@neerajsaini.com', suffix: '→', copyable: true, copyValue: 'contact@neerajsaini.com' },
+  {
+    label: 'GitHub',
+    href: 'https://github.com/62fpsgaming-hue',
+    display: 'github.com/62fpsgaming-hue',
+    suffix: '↗',
+    action: () => window.open('https://github.com/62fpsgaming-hue', '_blank', 'noopener,noreferrer'),
+  },
+  {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/neeraj-saini-464318232/',
+    display: 'linkedin.com/in/neeraj-saini',
+    suffix: '↗',
+    action: () => window.open('https://www.linkedin.com/in/neeraj-saini-464318232/', '_blank', 'noopener,noreferrer'),
+  },
+  {
+    label: 'Email',
+    href: 'mailto:neeraj200621@gmail.com',
+    display: 'neeraj200621@gmail.com',
+    suffix: '→',
+    copyable: true,
+    copyValue: 'neeraj200621@gmail.com',
+    action: null, // handled by handleCopy
+  },
 ];
 
 export default function Contact() {
@@ -109,10 +129,28 @@ export default function Contact() {
             <a
               key={link.label}
               ref={linkRefs[i]}
-              href={link.href}
+              href={link.copyable ? undefined : link.href}
               target={link.href.startsWith('http') ? '_blank' : undefined}
               rel="noopener noreferrer"
-              onClick={link.copyable ? (e) => handleCopy(e, link.copyValue!) : undefined}
+              role={link.copyable ? 'button' : undefined}
+              tabIndex={0}
+              onClick={link.copyable
+                ? (e) => handleCopy(e, link.copyValue!)
+                : link.action
+                ? (e) => { e.preventDefault(); link.action!(); }
+                : undefined}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  if (link.copyable) {
+                    navigator.clipboard.writeText(link.copyValue!);
+                    setCopied(true);
+                    setTimeout(() => setCopied(false), 2000);
+                  } else if (link.action) {
+                    link.action();
+                  }
+                }
+              }}
               data-magnetic="true"
               style={{
                 display: 'flex',
@@ -124,28 +162,25 @@ export default function Contact() {
                 textDecoration: 'none',
                 color: 'rgba(255,255,255,0.55)',
                 fontFamily: 'var(--font-mono)',
-                fontSize: 'clamp(14px, 2.2vw, 20px)',
-                letterSpacing: '0.08em',
+                fontSize: 'clamp(13px, 2vw, 18px)',
+                letterSpacing: '0.06em',
                 transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                 outline: 'none',
                 cursor: 'none',
               }}
-              onMouseEnter={e => {
-                e.currentTarget.style.color = '#fff';
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.color = 'rgba(255,255,255,0.55)';
-              }}
-              onFocus={e => {
-                e.currentTarget.style.color = '#fff';
-              }}
-              onBlur={e => {
-                e.currentTarget.style.color = 'rgba(255,255,255,0.55)';
-              }}
+              onMouseEnter={e => { e.currentTarget.style.color = '#fff'; }}
+              onMouseLeave={e => { e.currentTarget.style.color = 'rgba(255,255,255,0.55)'; }}
+              onFocus={e => { e.currentTarget.style.color = '#fff'; }}
+              onBlur={e => { e.currentTarget.style.color = 'rgba(255,255,255,0.55)'; }}
             >
-              <span>{link.label}</span>
-              <span style={{ fontSize: '0.85em', opacity: 0.5 }}>
-                {link.copyable && copied ? 'COPIED.' : link.suffix}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                <span style={{ fontSize: '0.7em', letterSpacing: '0.3em', color: 'rgba(255,255,255,0.25)', fontFamily: 'var(--font-mono)' }}>
+                  {link.label.toUpperCase()}
+                </span>
+                <span>{link.display}</span>
+              </div>
+              <span style={{ fontSize: '0.85em', opacity: 0.5, transition: 'opacity 0.2s' }}>
+                {link.copyable && copied ? 'COPIED ✓' : link.suffix}
               </span>
             </a>
           ))}
