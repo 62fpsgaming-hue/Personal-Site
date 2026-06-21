@@ -59,15 +59,11 @@ const nextConfig: NextConfig = {
       },
       {
         // Optimize video caching
-        source: "/black-hole-opt.(webm|mp4)",
+        source: "/black-hole.m4a",
         headers: [
           {
             key: "Cache-Control",
             value: "public, max-age=31536000, immutable",
-          },
-          {
-            key: "Content-Type",
-            value: "video/webm; video/mp4",
           },
         ],
       },

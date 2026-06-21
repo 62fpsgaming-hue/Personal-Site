@@ -144,10 +144,7 @@ export default function InteractiveRings() {
           willChange: 'transform',
         }}
       >
-        {/* WebM format for better compression (modern browsers) */}
-        <source src="/black-hole-opt.webm" type="video/webm" />
-        {/* MP4 fallback for older browsers */}
-        <source src="/black-hole-opt.mp4" type="video/mp4" />
+        <source src="/black-hole.m4a" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       
